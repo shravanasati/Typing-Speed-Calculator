@@ -1,2 +1,6 @@
 # Typing-Speed-Calculator
-A typing speed calculator made in python to check one's typing speed.
+**Typing speed calculator** - A python program which can calculate the approx typing speed of a user in words per minute(WPM) and also tracks the number of mistakes done by the user while giving this test. 
+
+Find the *typing_speed_phrases.txt* to pick the phrases randomly and *typing_speed_history.txt* for history of all the typing speed tests.
+
+No external module required.
