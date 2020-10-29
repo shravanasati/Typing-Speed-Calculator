@@ -1,6 +1,6 @@
 import time, random
 
-with open(r"C:\Users\Lenovo\Documents\Python Codes\typing_speed_phrases.txt") as p:
+with open(r"typing_speed_phrases.txt") as p:
     ps = p.read()
     phrase_list = ps.split("\n")
 
@@ -10,7 +10,7 @@ def save_history(name:str, wpm, mistakes:int):
     """
     txt = f"{name.capitalize()} had an average typing speed of {wpm} wpm with {mistakes} mistakes commited.\n"
     try:
-        with open(r'C:\Users\Lenovo\Documents\Python Codes\typing_speed_history.txt', 'a') as f:
+        with open(r'typing_speed_history.txt', 'a') as f:
             f.write(txt)
     except Exception as e:
         print(e)
@@ -79,7 +79,7 @@ def typing_speed(name:str):
 if __name__ == "__main__":
     print("WELCOME TO THE TYPING SPEED COUNTER!\n")
     name = input("Enter your name: ")
-    if name == "shravan-1908":
+    if name == "password":
         read_history()
         quit()
     else:
