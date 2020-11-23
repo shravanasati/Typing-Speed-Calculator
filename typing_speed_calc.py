@@ -1,6 +1,6 @@
 import time, random
 
-with open(r"typing_speed_phrases.txt") as p:
+with open(r"C:\Users\Lenovo\Documents\Python Codes\typing_speed_phrases.txt") as p:
     ps = p.read()
     phrase_list = ps.split("\n")
 
@@ -10,7 +10,7 @@ def save_history(name:str, wpm, mistakes:int):
     """
     txt = f"{name.capitalize()} had an average typing speed of {wpm} wpm with {mistakes} mistakes commited.\n"
     try:
-        with open(r'typing_speed_history.txt', 'a') as f:
+        with open(r'C:\Users\Lenovo\Documents\Python Codes\typing_speed_history.txt', 'a') as f:
             f.write(txt)
     except Exception as e:
         print(e)
@@ -31,6 +31,7 @@ def typing_speed(name:str):
     sum_wpm = 0
     already_asked = []
     mistakes = 0
+    mistake_dict = {}
 
     for i in range(1, 6):
         while True:
@@ -63,25 +64,32 @@ def typing_speed(name:str):
                         pass
                     else:
                         mistakes += 1
+                        mistake_dict.update({phrase_ques[i]:user_ans[i]})
                 break
             else:
-                print("You didn't typed the phrase wholly!")
+                print("You didn't typed the whole phrase!")
 
         print("\n---------------------------------------------\n")
                 
     average_wpm = sum_wpm/5
     result = f"Hey {name.capitalize()}, your average words per minute(WPM) counts {average_wpm} with {mistakes} mistakes commited.\n"
+    print(result)
+
+    if len(mistake_dict.keys()) != 0:
+        print("Your typing mistakes are:\n")
+        for key in mistake_dict.keys():
+            print(f"{key} --> {mistake_dict[key]}")
 
     save_history(name, average_wpm, mistakes)
-    return result
 
 
 if __name__ == "__main__":
     print("WELCOME TO THE TYPING SPEED COUNTER!\n")
     name = input("Enter your name: ")
-    if name == "password":
+
+    if name == "shravan-1908":
         read_history()
         quit()
+
     else:
-        print(f"\n{typing_speed(name)}")
-        time.sleep(2)
+        typing_speed(name)
