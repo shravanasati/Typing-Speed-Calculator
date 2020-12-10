@@ -1,6 +1,6 @@
 import time, random
 
-with open(r"C:\Users\Lenovo\Documents\Python Codes\typing_speed_phrases.txt") as p:
+with open(r"typing_speed_phrases.txt") as p:
     ps = p.read()
     phrase_list = ps.split("\n")
 
@@ -8,10 +8,10 @@ def save_history(name:str, wpm, mistakes:int):
     """
     Saves the result of the typing speed test.
     """
-    txt = f"{name.capitalize()} had an average typing speed of {wpm} wpm with {mistakes} mistakes commited.\n"
+    text = f"{name.capitalize()} had an average typing speed of {wpm} wpm with {mistakes} mistakes commited.\n"
     try:
-        with open(r'C:\Users\Lenovo\Documents\Python Codes\typing_speed_history.txt', 'a') as f:
-            f.write(txt)
+        with open(r'typing_speed_history.txt', 'a') as f:
+            f.write(text)
     except Exception as e:
         print(e)
 
@@ -19,14 +19,14 @@ def read_history():
     """
     Reads the typing speed test history.
     """
-    with open('typing_speed_history.txt', 'r') as f:
+    with open(r"typing_speed_history.txt", 'r') as f:
         fc = f.read()
         print(fc)
         
 
-def typing_speed(name:str):
+def calc_typing_speed(name:str):
     """
-    Main code
+    Main code.
     """
     sum_wpm = 0
     already_asked = []
@@ -66,13 +66,14 @@ def typing_speed(name:str):
                         mistakes += 1
                         mistake_dict.update({phrase_ques[i]:user_ans[i]})
                 break
+
             else:
                 print("You didn't typed the whole phrase!")
 
         print("\n---------------------------------------------\n")
                 
     average_wpm = sum_wpm/5
-    result = f"Hey {name.capitalize()}, your average words per minute(WPM) counts {average_wpm} with {mistakes} mistakes commited.\n"
+    result = f"Hey {name.capitalize()}, your average words per minute typing speed counts {average_wpm}.\n You commited {mistakes} mistakes.\n"
     print(result)
 
     if len(mistake_dict.keys()) != 0:
@@ -87,9 +88,14 @@ if __name__ == "__main__":
     print("WELCOME TO THE TYPING SPEED COUNTER!\n")
     name = input("Enter your name: ")
 
-    if name == "shravan-1908":
-        read_history()
-        quit()
+    while True:
+        task = int(input("What to do?\n 1. Take a typing speed test \n 2. Read old typing speed test history \n 3. Quit \n"))
 
-    else:
-        typing_speed(name)
+        if task == 1:
+            calc_typing_speed(name)
+
+        elif task == 2:
+            read_history()
+
+        else:
+            print("Thanks for visiting!")
