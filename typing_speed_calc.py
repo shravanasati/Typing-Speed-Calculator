@@ -46,7 +46,7 @@ def calc_typing_speed(name:str):
                 break
 
         while 1:
-            print("Press enter and start typing the phrase immediately and again press enter once you've written the phrase.")
+            input("Press enter and start typing the phrase immediately and again press enter once you've written the phrase.")
             # time taken by user for response
             init = time.time()
             user_ans = input()
